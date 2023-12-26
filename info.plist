@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>BLE Tester</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>com.eof.ble.tester</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.13</string>
+	<key>NOTE</key>
+	<string>Empire of Fun Software Labs</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Allow you to save charts and graphs from the app.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Allow you to use Bluetooth peripheral.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Allow you to use Bluetooth client.</string>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>Allow you to use desktop folder.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>Allow you to use documents folder.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>Allow you to use download folder.</string>
+	<key>NSNetworkVolumesUsageDescription</key>
+	<string>Allow you to use disk volumes facility.</string>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string>Allow you to use domain providers.</string>
+	<key>NSRemovableVolumesUsageDescription</key>
+	<string>Allow you to use removal disk volumes facility.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Allow you to use network facilities.</string>
+	<key>NSNearbyInteractionUsageDescription</key>
+	<string>Allow you to use nearby network facilities.</string>
+	<key>NSAppleScriptEnabled</key>
+	<string>Allow you to use scripting facilities.</string>
+	<key>NSSensorKitUsageDescription</key>
+	<string>Allow you to use sensor facilities.</string>
+	<key>NSSensorKitUsageDetail</key>
+	<string>Allow you to use sendor details.</string>
+	<key>NSSensorKitPrivacyPolicyURL</key>
+	<string>https://carios.eschrich.org</string>
+</dict>
+</plist>

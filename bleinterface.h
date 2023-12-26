@@ -1,20 +1,20 @@
 #ifndef BLEINTERFACE_H
 #define BLEINTERFACE_H
 
-#include <QObject>
 #include <QBluetoothDeviceDiscoveryAgent>
 #include <QBluetoothDeviceInfo>
+#include <QBluetoothLocalDevice>
 #include <QLowEnergyController>
 #include <QLowEnergyService>
+#include <QObject>
 #include <QTimer>
-
 
 #include "lib-qt-qml-tricks/src/qqmlhelpers.h"
 
 #define READ_INTERVAL_MS 3000
 #define CHUNK_SIZE 20
 
-class DeviceInfo: public QObject
+class DeviceInfo : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString deviceName READ getName NOTIFY deviceChanged)
@@ -49,17 +49,11 @@ public:
     void connectCurrentDevice();
     void disconnectDevice();
     Q_INVOKABLE void scanDevices();
-    void write(const QByteArray& data);
+    void write(const QByteArray &data);
 
-    bool isConnected() const
-    {
-        return m_connected;
-    }
+    bool isConnected() const { return m_connected; }
 
-    int currentService() const
-    {
-        return m_currentService;
-    }
+    int currentService() const { return m_currentService; }
 
 public slots:
     void setCurrentService(int currentService)
@@ -79,22 +73,21 @@ signals:
     void currentServiceChanged(int currentService);
 
 private slots:
-    //QBluetothDeviceDiscoveryAgent
-    void addDevice(const QBluetoothDeviceInfo&);
+    // QBluetothDeviceDiscoveryAgent
+    void addDevice(const QBluetoothDeviceInfo &);
     void onScanFinished();
     void onDeviceScanError(QBluetoothDeviceDiscoveryAgent::Error);
 
-    //QLowEnergyController
+    // QLowEnergyController
     void onServiceDiscovered(const QBluetoothUuid &);
     void onServiceScanDone();
     void onControllerError(QLowEnergyController::Error);
     void onDeviceConnected();
     void onDeviceDisconnected();
 
-    //QLowEnergyService
+    // QLowEnergyService
     void onServiceStateChanged(QLowEnergyService::ServiceState s);
-    void onCharacteristicChanged(const QLowEnergyCharacteristic &c,
-                              const QByteArray &value);
+    void onCharacteristicChanged(const QLowEnergyCharacteristic &c, const QByteArray &value);
     void serviceError(QLowEnergyService::ServiceError e);
 
     void read();
@@ -104,22 +97,23 @@ private slots:
 
 private:
     inline void waitForWrite();
-    void update_connected(bool connected){
-        if(connected != m_connected){
+    void update_connected(bool connected)
+    {
+        if (connected != m_connected) {
             m_connected = connected;
             emit connectedChanged(connected);
         }
     }
-
-    QBluetoothDeviceDiscoveryAgent *m_deviceDiscoveryAgent;
+    QBluetoothLocalDevice m_localDevice;
+    QBluetoothDeviceDiscoveryAgent *m_discovery;
     QLowEnergyDescriptor m_notificationDesc;
     QLowEnergyController *m_control;
     QList<QBluetoothUuid> m_servicesUuid;
     QLowEnergyService *m_service;
     QLowEnergyCharacteristic m_readCharacteristic;
     QLowEnergyCharacteristic m_writeCharacteristic;
-    QList<DeviceInfo*> m_devices;
-//    bool m_foundService;
+    QList<DeviceInfo *> m_devices;
+    //    bool m_foundService;
     QTimer *m_readTimer;
     bool m_connected;
     void searchCharacteristic();
